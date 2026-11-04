@@ -1,5 +1,5 @@
 // JupiBuddy artifact mime helpers — ported from jupyter-vscode-mcp v1.0.0 (MIT)
-// Original: /mnt/e/agent-playground/jupyter-mcp-vscode/jupyter-mcp-vscode-release/src/format.ts:18-39
+// Original: jupyter-vscode-mcp src/format.ts:18-39
 // Preserved under MIT license (Copyright (c) 2026 hadiproz)
 
 export function extensionForMime(mime: string): string {

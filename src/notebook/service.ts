@@ -798,8 +798,8 @@ export class NotebookService {
   // --- output artifacts: mirror jupyter-vscode-mcp jupyterApi.ts:501-539 + format.ts:18-39 ---
   // Writes each output item to <workspace>/.jupibuddy/artifacts/<notebook>-c<cell>-o<out>-i<item>.<ext>
   // Text mimes inline if ≤8KB (same threshold), else preview ≤1000 chars + artifactPath.
-  // Ref: /mnt/e/agent-playground/jupyter-mcp-vscode/jupyter-mcp-vscode-release/src/jupyterApi.ts:501-539
-  // Ref: /mnt/e/agent-playground/jupyter-mcp-vscode/jupyter-mcp-vscode-release/src/format.ts:18-39
+  // Ref: jupyter-vscode-mcp src/jupyterApi.ts:501-539
+  // Ref: jupyter-vscode-mcp src/format.ts:18-39
   getArtifactsRoot(): string {
     if (!this.workspaceRoot) throw new Error("Artifacts require an open workspace folder");
     return join(this.workspaceRoot, ".jupibuddy", "artifacts");
