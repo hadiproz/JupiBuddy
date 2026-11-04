@@ -13,18 +13,54 @@ tools.
 
 JupiBuddy was built during the Meta AI Hackathon (28 Oct – 5 Nov 2026). It
 opens empty by default and sits on top of no existing editor. Its pre-existing
-foundation is `jupyter-vscode-mcp`, used here as inspiration and base logic
+foundation is [jupyter-vscode-mcp](https://github.com/hadiproz/jupyter-vscode-mcp), used here as inspiration and base logic
 only; everything in this repository — the web-native Bun frontend, the live
 JupyterServerKernel, the MCP tools, and the three-pane workbench UI — was
 built during the event window. The repository runs standalone from this
 README.
 
-## Why
+## Why: Build for Your World
 
-Few tools let you work with Jupyter notebooks well, and the well-known ones
-are big and heavy. JupiBuddy is the alternative for users who want to process
-data in notebooks with AI help — plus a precise, lightweight Jupyter notebook
-editor.
+The hackathon theme is "Build for Your World": solve a problem you know
+firsthand, free up time and mental space, and make something possible
+that wasn't before. My world is data analysis in Jupyter notebooks.
+
+- **A problem known firsthand.** My working days are spent inside
+  Jupyter notebooks — I am finishing a thesis that predicts Solana
+  transaction fees by comparing machine-learning models — and I have
+  also built tooling for agents that work on notebooks, so I know the
+  naive way an agent opens one: read the raw `.ipynb` file and parse
+  the JSON by hand. That file holds everything at once — every cell,
+  every output, every embedded image — so opening a notebook is slow,
+  expensive in tokens, and can eat a large share of the context window
+  before the agent has done any work; then it re-reads the whole file
+  again after every change. JupiBuddy takes the approach I first built
+  towards with
+  [jupyter-vscode-mcp](https://github.com/hadiproz/jupyter-vscode-mcp)
+  and completed here: the notebook is exposed through MCP tools, so
+  the agent asks for exactly what it needs — this cell, those outputs,
+  the kernel's status — and stays aware of the notebook's live state
+  without ever swallowing the file. The context window stays free for
+  the actual analysis.
+
+- **Time and mental space.** A single analysis is dozens of mechanical
+  round trips — write a cell, run it, read the error, fix, re-run,
+  compare — and each one spends the analyst's attention on execution
+  babysitting instead of on the data and the question. JupiBuddy hands
+  the round trips to the agent: it plans, writes and runs cells, reads
+  outputs and errors, fixes its own mistakes, and reports back, while
+  I state the intent and supervise. The well-known notebook
+  environments — VS Code and JupyterLab — are also big and heavy, and
+  on a 16 GB laptop that weight is real. JupiBuddy is a precise,
+  lightweight editor that runs locally on Bun.
+
+- **Something that wasn't possible before.** The agent works inside a
+  real notebook, on a real Python kernel, through the same tools I use
+  myself — every cell shows who wrote it, me or the agent, and I can
+  pause a run, approve steps, or undo its work. It is not a chat window
+  bolted onto a notebook: the notebook is the shared workplace. And
+  because JupiBuddy also exposes its tools over MCP, other agents can
+  work in the same notebook in the same way.
 
 ## What it does
 
